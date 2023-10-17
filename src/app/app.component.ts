@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from './models/user.model';
 import { UsersQuery } from './state/users.query';
 import { UserService } from './service/user.service';
-import { UserAddModalComponent } from './components/user-add-modal/user-add-modal.component';
+import { UserAddModalComponent } from './user-add-modal/user-add-modal.component';
 import { MatDialog } from '@angular/material/dialog';
 import { combineLatest, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
