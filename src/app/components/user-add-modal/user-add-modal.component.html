@@ -1,0 +1,15 @@
+<div>
+  <h2>Add User</h2>
+  <form (formdata)="userForm" (ngSubmit)="addUser()">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" id="name" formControlName="name" required>
+      <div *ngIf="userForm.get('name').hasError('nameNotUnique')">Name is not unique.</div>
+    </div>
+    <div class="form-group">
+      <label for="active">Active</label>
+      <input type="checkbox" id="active" formControlName="active">
+    </div>
+    <button type="submit" [disabled]="userForm.invalid">Add</button>
+  </form>
+</div>
