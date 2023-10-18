@@ -1,0 +1,26 @@
+<div class="container">
+    <button mat-raised-button (click)="openAddUserDialog()" [disabled]="!(canAddUser$ | async)"
+        [style.backgroundColor]="(canAddUser$ | async) ? 'cadetblue' : 'gray'">
+        Add User
+    </button>
+    
+    <table mat-table [dataSource]="users$">
+        <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef>ID</th>
+            <td mat-cell *matCellDef="let user">{{ user.id }}</td>
+        </ng-container>
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef>Name</th>
+            <td mat-cell *matCellDef="let user">{{ user.name }}</td>
+        </ng-container>
+        <ng-container matColumnDef="active">
+            <th mat-header-cell *matHeaderCellDef>Active</th>
+            <td mat-cell *matCellDef="let user">
+            <mat-slide-toggle [checked]="user.active" (change)="toggleUserActive(user)"></mat-slide-toggle>
+            </td>
+        </ng-container>
+    
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</div>
